@@ -7,9 +7,9 @@
   <body style="font-family: system-ui; background-color: #0f172a;">
     <h1 style="display: flex; color: #38bdf8; align-items: center; justify-content: center; font-size: 60px">Tic Tac Toe</h1>
 
-    <div class="grid" style="display: flex; justify-content: start; align-items: center;">
+    <div class="grid" style="display: flex; align-items: center; justify-content: space-between; align-items: center;">
 
-      <div class="left-panel" style="display: flex;">
+      <div class="left-panel" style="display: flex; margin-left: 80px;">
 
         <div class="active" style="font-size: 70px; color: #f43f5e;">></div>
 
@@ -26,45 +26,55 @@
 
       </div>
 
-      <div class="first-col" style="display: inline-block; align-items: center; justify-content: center; background-color: #22d3ee; margin: 0px;">
+      <div class="mid-panel" style="display: flex; margin-left: 100px;">
+        <div class="first-col" style="display: inline-block; align-items: center; justify-content: center; background-color: #22d3ee; margin: 0px;">
 
-        <div class="cell-1" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; margin-right: 4px; font-size: 20px; border: 2px solid #475569;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'">
-          <div class="X" style="font-size: 90px; margin-left: 30px; color: #38bdf8;">X</div>
+          <div class="cell-1" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; margin-right: 4px; font-size: 20px; border: 2px solid #475569; cursor: pointer;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'">
+            <div class="X" style="font-size: 90px; margin-left: 35px; color: #38bdf8;">X</div>
+          </div>
+
+          <div class="cell-2" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; margin-right: 4px; border: 2px solid #475569; cursor: pointer;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'">
+            <div class="O" style="font-size: 90px; margin-left: 25px; color: #f43f5e;">O</div>
+          </div>
+
+          <div class="cell-3" style="background-color: #1e293b; height: 120px; width: 120px; margin-right: 4px; border: 2px solid #475569; cursor: pointer;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'">
+          </div>
         </div>
 
-        <div class="cell-2" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; margin-right: 4px; border: 2px solid #475569;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'">
-          <div class="O" style="font-size: 90px; margin-left: 25px; color: #f43f5e;">O</div>
+        <div class="second-col" style="display: inline-block; align-items: center; justify-content: center; background-color: #22d3ee; margin: 0px;">
+          <div class="cell-4" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; margin-right: 4px; border: 2px solid #475569; cursor: pointer;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'"></div>
+          <div class="cell-5" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; margin-right: 4px; border: 2px solid #475569; cursor: pointer;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'"></div>
+          <div class="cell-6" style="background-color: #1e293b; height: 120px; width: 120px; margin-right: 4px; border: 2px solid #475569; cursor: pointer;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'">
+            <div class="X" style="font-size: 90px; margin-left: 35px; color: #38bdf8;">X</div>
+          </div>
         </div>
 
-        <div class="cell-3" style="background-color: #1e293b; height: 120px; width: 120px; margin-right: 4px; border: 2px solid #475569;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'">
-          <div class="O" style="font-size: 90px; margin-left: 25px; color: #f43f5e;">O</div>
+        <div class="third-col" style="display: inline-block; align-items: center; justify-content: center; background-color: #22d3ee; margin: 0px;">
+          <div class="cell-7" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; border: 2px solid #475569; cursor: pointer;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'">
+            <div class="O" style="font-size: 90px; margin-left: 25px; color: #f43f5e;">O</div>
+          </div>
+          <div class="cell-8" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; border: 2px solid #475569; cursor: pointer;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'"></div>
+          <div class="cell-9" style="background-color: #1e293b; height: 120px; width: 120px; border: 2px solid #475569; cursor: pointer;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'"></div>
         </div>
+
       </div>
 
-      <div class="second-col" style="display: inline-block; align-items: center; justify-content: center; background-color: #22d3ee; margin: 0px;">
-        <div class="cell-4" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; margin-right: 4px; border: 2px solid #475569;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'"></div>
-        <div class="cell-5" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; margin-right: 4px; border: 2px solid #475569;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'"></div>
-        <div class="cell-6" style="background-color: #1e293b; height: 120px; width: 120px; margin-right: 4px; border: 2px solid #475569;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'"></div>
-      </div>
+      <div class="right-panel" style="display: flex; flex-direction: column; margin-right: 10px;">
 
-      <div class="third-col" style="display: inline-block; align-items: center; justify-content: center; background-color: #22d3ee; margin: 0px;">
-        <div class="cell-7" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; border: 2px solid #475569;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'"></div>
-        <div class="cell-8" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; border: 2px solid #475569;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'"></div>
-        <div class="cell-9" style="background-color: #1e293b; height: 120px; width: 120px; border: 2px solid #475569;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'"></div>
-      </div>
+        <div class="row-1" style="block">
+          <h1 class="subtitle" style="font-size: 50px; color: #e5e7eb">Welcome to the game</h1>
+          <div class="game-start" style="display: flex; justify-content: space-between; align-items: center;">
+            <p1 style="font-size: 40px; color: #38bdf8; font-weight: bold; margin-bottom: 8px;">Start a new game</p1>
 
-      <div class="right-panel" style="display: flex; flex-direction: column">
-        <h1 class="subtitle" style="font-size: 50px; color: #e5e7eb">Welcome to the game</h1>
-        <div class="game-start" style="display: flex; justify-content: space-between; align-items: center;">
-          <p1 style="font-size: 40px; color: #38bdf8; font-weight: bold; margin-bottom: 8px;">Start a new game</p1>
+            <button class="start-button" style="background-color: #3b82f6; color: white; font-weight: bold; border: 2px solid black; font-size: 20px; padding: 12px; border-radius: 10px; cursor: pointer;" onmouseenter="this.style.background='#2563eb'" onmouseleave="this.style.background='#3b82f6'" onmousedown="this.style.background='#3b82f6'" onmouseup="this.style.background='#2563eb'">New Game</button>
 
-          <button class="start-button" style="background-color: #3b82f6; color: white; font-weight: bold; border: 2px solid black; font-size: 20px; padding: 12px; border-radius: 10px;" onmouseenter="this.style.background='#2563eb'" onmouseleave="this.style.background='#3b82f6'" onmousedown="this.style.background='#3b82f6'" onmouseup="this.style.background='#2563eb'">New Game</button>
-
+          </div>
         </div>
-        <div class="result" style="color: #e5e7eb; font-size: 40px; font-weight: bold; margin-left: 120px; margin-top: 20px;">
-          Player-1 won! 
+
+        <div class="result" style="display: flex; align-items: center; justify-content: center; color: #e5e7eb; font-size: 40px; font-weight: bold; margin-top: 20px;">
+          Player-2 win's ✨
         </div>
-      </div>
+      </div
 
     </div>
 
