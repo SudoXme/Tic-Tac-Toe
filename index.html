@@ -77,29 +77,31 @@
 
     </div>
     <script>
+      const pointer = document.getElementsByClassName("active")[0];
+      const player1 = document.getElementsByClassName("player-name-1")[0];
+      const player2 = document.getElementsByClassName("player-name-2")[0];
+      const activePlayerColor = "rgb(229, 231, 235)"
+      const X = document.getElementsByClassName("X")[0];
+      const O = document.getElementsByClassName("O")[0];
 
       const setActivePlayer = () => {
-        const pointer = document.getElementsByClassName("active")[0];
-        const player1 = document.getElementsByClassName("player-name-1")[0];
-        const player2 = document.getElementsByClassName("player-name-2")[0];
-        const player1Color = player1.style.color;
-        const activePlayerColor = "rgb(229, 231, 235)"
 
-        if(player1Color === activePlayerColor){
+        if(player1.style.color === activePlayerColor){
           pointer.style.marginTop = "95px";
-          player1.style.color = player2.style.color;
+          player1.style.color = "#94a3b8";
           player2.style.color = "#e5e7eb";
-
         }else{
           pointer.style.marginTop = "0px";
-          player2.style.color = player1.style.color;
+          player2.style.color = "#94a3b8";
           player1.style.color = "#e5e7eb";
         }
 
       }
       
       const cellClicked = () => {
-        console.log("clicked")
+        if(player1.style.color === activePlayerColor){
+
+        }
       }
 
 
