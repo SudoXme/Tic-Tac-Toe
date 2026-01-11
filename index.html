@@ -86,6 +86,7 @@
       const O = `<div class="O" style="font-size: 90px; margin-left: 25px; color: #f43f5e;">O</div>`;
       let clickedCellNumber = '';
       let gameStarted = false;
+      let gameDraw = false;
       let cells = ["","","","","","","","",""];
 
       const startGame = () => {
@@ -105,9 +106,48 @@
       }
 
       // Write the code to check whether someone won/lost or the game is draw
+      const winArrangements = [
+        [1, 2, 3],
+        [1, 4, 7],
+        [1, 5, 9],
+        [2, 5, 8],
+        [3, 6, 9],
+        [3, 5, 7],
+        [4, 5, 6],
+        [7, 8, 9],
+      ]
+      // If X or O are present at cells[0], cells[1], cells[2] then either X or O win's. 
+      // 0 = winArrangements[0][0] - 1, 1 = winArrangements[0][1] - 1, 2 = winArrangements[0][2] - 1
+      // So if cells[0] = cells[1] = cells[2], then either X or O win's;
+      //console.log(winArrangements[0][0])
+
+      // Iterate over the cells array and check if any cell is empty. 
+      // If there is no empty cells then declare the game draw
+      const gameResult = () => {
+        winArrangements.map((a) => {
+          if(cells[a[0]-1] === cells[a[1]-1] && cells[a[1]-1] === cells[a[2]-1] && cells[a[0]-1] != ""){
+            console.log("Won")
+          }
+        })
+        
+        /**
+        cells.map((c) => {
+          if(c === ""){
+            gameDraw = false;
+          }else{
+            gameDraw = true;
+          }
+        })
+        **/
+
+        /**
+        if(cells[0] === cells[1] && cells[1] === cells[2] && cells[0] != ""){
+          console.log("Won")
+        }
+        **/
 
 
-
+      }
 
       // Before it write the code to fill the entries (X or O) in the cells array;
 
@@ -161,6 +201,7 @@
               clickedCell.innerHTML = O;
               fillCellArray("O");
             }
+            gameResult();
             setActivePlayer();
             resultOrInfo.innerText ="";
           }else{
