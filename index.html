@@ -59,13 +59,13 @@
       </div>
 
       <div class="right-panel" style="display: flex; flex-direction: column; margin-right: 10px;">
-
-        <div class="row-1" style="block">
-          <h1 class="subtitle" style="font-size: 50px; color: #e5e7eb">Welcome to the game</h1>
+        <h1 class="timer" style="display: flex; align-items: center; justify-content: center; font-weight: bold; color: #e5e7eb; font-size: 40px;"></h1>
+        <div class="row-1" style="display: block; margin: 0px;">
+          <h1 class="subtitle" style="font-size: 50px; color: #e5e7eb; margin-top: 0px;">Welcome to the game</h1>
           <div class="game-start" style="display: flex; justify-content: space-between; align-items: center;">
             <p1 style="font-size: 40px; color: #38bdf8; font-weight: bold; margin-bottom: 8px;">Start a new game</p1>
 
-            <button class="start-button" style="background-color: #3b82f6; color: white; font-weight: bold; border: 2px solid black; font-size: 20px; padding: 12px; border-radius: 10px; cursor: pointer;" onmouseenter="this.style.background='#2563eb'" onmouseleave="this.style.background='#3b82f6'" onmousedown="this.style.background='#3b82f6'" onmouseup="this.style.background='#2563eb'" onclick=startGame()>New Game</button>
+            <button class="start-button" style="background-color: #3b82f6; color: white; font-weight: bold; border: 2px solid black; font-size: 20px; padding: 12px; border-radius: 10px; cursor: pointer;" onmouseenter="this.style.background='#2563eb'" onmouseleave="this.style.background='#3b82f6'" onmousedown="this.style.background='#3b82f6'" onmouseup="this.style.background='#2563eb'" onclick=startTimer()>New Game</button>
 
           </div>
         </div>
@@ -80,6 +80,7 @@
       const player1 = document.getElementsByClassName("player-name-1")[0];
       const player2 = document.getElementsByClassName("player-name-2")[0];
       const resultOrInfo = document.getElementsByClassName("result")[0];
+      const timer = document.getElementsByClassName("timer")[0];
       const activePlayerColor = "rgb(229, 231, 235)"
       const X = `<div class="X" style="font-size: 90px; margin-left: 35px; color: #38bdf8;">X</div>`;
       const O = `<div class="O" style="font-size: 90px; margin-left: 25px; color: #f43f5e;">O</div>`;
@@ -95,6 +96,22 @@
           document.getElementsByClassName(`cell-${i}`)[0].innerHTML = "";
           i++;
         })
+      }
+      // Write the code for the timer that will be shown when the game is somebody won/lost or the game is draw. 
+      const startTimer = () => {
+        let t = 3;
+        let j = 0;
+        while(j<3){
+          setTimeout(() => {
+            timer.innerText = `Starting new game in ${t--}s`;
+          }, j*1000);
+          j++;
+        }
+
+        setTimeout(() => {
+          timer.innerText = "";
+          startGame();
+        }, t*1000);
       }
 
       const setActivePlayer = () => {
