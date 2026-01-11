@@ -37,7 +37,7 @@
             <div class="O" style="font-size: 90px; margin-left: 25px; color: #f43f5e;">O</div>
           </div>
 
-          <div class="cell-3" style="background-color: #1e293b; height: 120px; width: 120px; margin-bottom: 4px; margin-right: 4px; border: 2px solid #475569; cursor: pointer;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'" onclick=cellClicked() onmousedown="clickedCellClass = 'cell-3'"></div>
+          <div class="cell-3" style="background-color: #1e293b; height: 120px; width: 120px; margin-right: 4px; border: 2px solid #475569; cursor: pointer;" onmouseenter="this.style.background='#334155'" onmouseleave="this.style.background='#1e293b'" onclick=cellClicked() onmousedown="clickedCellClass = 'cell-3'"></div>
         </div>
 
         <div class="second-col" style="display: inline-block; align-items: center; justify-content: center; background-color: #22d3ee; margin: 0px;">
@@ -65,7 +65,7 @@
           <div class="game-start" style="display: flex; justify-content: space-between; align-items: center;">
             <p1 style="font-size: 40px; color: #38bdf8; font-weight: bold; margin-bottom: 8px;">Start a new game</p1>
 
-            <button class="start-button" style="background-color: #3b82f6; color: white; font-weight: bold; border: 2px solid black; font-size: 20px; padding: 12px; border-radius: 10px; cursor: pointer;" onmouseenter="this.style.background='#2563eb'" onmouseleave="this.style.background='#3b82f6'" onmousedown="this.style.background='#3b82f6'" onmouseup="this.style.background='#2563eb'" onclick=setActivePlayer()>New Game</button>
+            <button class="start-button" style="background-color: #3b82f6; color: white; font-weight: bold; border: 2px solid black; font-size: 20px; padding: 12px; border-radius: 10px; cursor: pointer;" onmouseenter="this.style.background='#2563eb'" onmouseleave="this.style.background='#3b82f6'" onmousedown="this.style.background='#3b82f6'" onmouseup="this.style.background='#2563eb'" onclick=startGame()>New Game</button>
 
           </div>
         </div>
@@ -79,10 +79,23 @@
       const pointer = document.getElementsByClassName("active")[0];
       const player1 = document.getElementsByClassName("player-name-1")[0];
       const player2 = document.getElementsByClassName("player-name-2")[0];
+      const resultOrInfo = document.getElementsByClassName("result")[0];
       const activePlayerColor = "rgb(229, 231, 235)"
       const X = `<div class="X" style="font-size: 90px; margin-left: 35px; color: #38bdf8;">X</div>`;
       const O = `<div class="O" style="font-size: 90px; margin-left: 25px; color: #f43f5e;">O</div>`;
       let clickedCellClass = '';
+      let gameStarted = false;
+      let cells = ["","","","","","","","",""];
+
+      const startGame = () => {
+        gameStarted = true;
+        resultOrInfo.innerHTML = "New game started, X's turn"
+        let i = 1;
+        cells.map( () => {
+          document.getElementsByClassName(`cell-${i}`)[0].innerHTML = "";
+          i++;
+        })
+      }
 
       const setActivePlayer = () => {
 
@@ -99,22 +112,31 @@
       }
       
       const cellClicked = () => {
-        //if( //game is started and the cell is empty both the condition should be satisfied)
-        let clickedCell = document.getElementsByClassName(clickedCellClass)[0];
+        if(gameStarted){
+          let clickedCell = document.getElementsByClassName(clickedCellClass)[0];
 
-        let isCellEmpty = clickedCell.innerHTML === "";
-        if(isCellEmpty){
-          if(player1.style.color === activePlayerColor){
-            clickedCell.innerHTML = X;
+          let isCellEmpty = clickedCell.innerHTML === "";
+          if(isCellEmpty){
+            if(player1.style.color === activePlayerColor){
+              clickedCell.innerHTML = X;
+            }else{
+              clickedCell.innerHTML = O;
+            }
+            setActivePlayer();
+            resultOrInfo.innerText ="";
           }else{
-            clickedCell.innerHTML = O;
+            setTimeout(() => {
+              resultOrInfo.innerHTML= "";
+            }, 2000);
+            resultOrInfo.innerText = "Cell is occupied"
           }
-          setActivePlayer();
         }else{
-          console.log("Cell is occupied")
+          setTimeout(() => {
+            resultOrInfo.innerHTML= "";
+          }, 2000);
+          resultOrInfo.innerText = "Plz start a new game"
         }
       }
-
 
     </script>
 
