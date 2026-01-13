@@ -105,61 +105,11 @@
         player1.style.color = "#e5e7eb";
       }
 
-      // Write the code to check whether someone won/lost or the game is draw
-      const winArrangements = [
-        [1, 2, 3],
-        [1, 4, 7],
-        [1, 5, 9],
-        [2, 5, 8],
-        [3, 6, 9],
-        [3, 5, 7],
-        [4, 5, 6],
-        [7, 8, 9],
-      ]
-      // If X or O are present at cells[0], cells[1], cells[2] then either X or O win's. 
-      // 0 = winArrangements[0][0] - 1, 1 = winArrangements[0][1] - 1, 2 = winArrangements[0][2] - 1
-      // So if cells[0] = cells[1] = cells[2], then either X or O win's;
-      //console.log(winArrangements[0][0])
-
-      // Iterate over the cells array and check if any cell is empty. 
-      // If there is no empty cells then declare the game draw
-      const gameResult = () => {
-        winArrangements.map((a) => {
-          if(cells[a[0]-1] === cells[a[1]-1] && cells[a[1]-1] === cells[a[2]-1] && cells[a[0]-1] != ""){
-            console.log("Won")
-          }
-        })
-        
-        /**
-        cells.map((c) => {
-          if(c === ""){
-            gameDraw = false;
-          }else{
-            gameDraw = true;
-          }
-        })
-        **/
-
-        /**
-        if(cells[0] === cells[1] && cells[1] === cells[2] && cells[0] != ""){
-          console.log("Won")
-        }
-        **/
-
-
-      }
-
-      // Before it write the code to fill the entries (X or O) in the cells array;
-
-      const fillCellArray = (cellEntry) => {
-        cells[clickedCellNumber-1] = cellEntry;
-      }
-
       // Write the code for the timer that will be shown when the game is somebody won/lost or the game is draw. 
       const startTimer = () => {
-        let t = 3;
+        let t = 5;
         let j = 0;
-        while(j<3){
+        while(j<5){
           setTimeout(() => {
             timer.innerText = `Starting new game in ${t--}s`;
           }, j*1000);
@@ -187,6 +137,61 @@
       }
 
 
+      // Write the code to check whether someone won/lost or the game is draw
+      const winArrangements = [
+        [1, 2, 3],
+        [1, 4, 7],
+        [1, 5, 9],
+        [2, 5, 8],
+        [3, 6, 9],
+        [3, 5, 7],
+        [4, 5, 6],
+        [7, 8, 9],
+      ]
+
+      // If X or O are present at cells[0], cells[1], cells[2] then either X or O win's. 
+      // 0 = winArrangements[0][0] - 1, 1 = winArrangements[0][1] - 1, 2 = winArrangements[0][2] - 1
+      // So if cells[0] = cells[1] = cells[2], then either X or O win's;
+      //console.log(winArrangements[0][0])
+
+      // Iterate over the cells array and check if any cell is empty. 
+      // If there is no empty cells then declare the game draw
+      // Now write the code to check who has won (X or O);
+
+
+
+      const gameResult = () => {
+        let gResult = "";
+        winArrangements.map((a) => {
+          if(cells[a[0]-1] === cells[a[1]-1] && cells[a[1]-1] === cells[a[2]-1] && cells[a[0]-1] != ""){
+            if(player1.style.color === activePlayerColor){
+              gResult = "O Won ✨";
+            }else{
+              gResult = "X Won ✨";
+            }
+            startTimer();
+          }
+        })
+        
+        emptyCellPresent = cells.includes("");
+
+        if(!emptyCellPresent){
+          gResult = "Draw 🤝";
+          startTimer();
+        }
+      
+        resultOrInfo.innerText = gResult;
+      }
+
+
+      // Before it write the code to fill the entries (X or O) in the cells array;
+
+      const fillCellArray = (cellEntry) => {
+        cells[clickedCellNumber-1] = cellEntry;
+      }
+
+
+
       
       const cellClicked = () => {
         if(gameStarted){
@@ -201,9 +206,9 @@
               clickedCell.innerHTML = O;
               fillCellArray("O");
             }
-            gameResult();
             setActivePlayer();
             resultOrInfo.innerText ="";
+            gameResult();
           }else{
             setTimeout(() => {
               resultOrInfo.innerHTML= "";
