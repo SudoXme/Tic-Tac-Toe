@@ -162,6 +162,14 @@
 
       const gameResult = () => {
         let gResult = "";
+
+        emptyCellPresent = cells.includes("");
+
+        if(!emptyCellPresent){
+          gResult = "Draw 🤝";
+          startTimer();
+        }
+
         winArrangements.map((a) => {
           if(cells[a[0]-1] === cells[a[1]-1] && cells[a[1]-1] === cells[a[2]-1] && cells[a[0]-1] != ""){
             if(player1.style.color === activePlayerColor){
@@ -173,12 +181,6 @@
           }
         })
         
-        emptyCellPresent = cells.includes("");
-
-        if(!emptyCellPresent){
-          gResult = "Draw 🤝";
-          startTimer();
-        }
       
         resultOrInfo.innerText = gResult;
       }
