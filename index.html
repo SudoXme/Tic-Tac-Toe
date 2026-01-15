@@ -88,6 +88,7 @@
       let gameStarted = false;
       let gameDraw = false;
       let cells = ["","","","","","","","",""];
+      let isGameFinished = false;
 
       const startGame = () => {
         gameStarted = true;
@@ -172,11 +173,7 @@
 
         winArrangements.map((a) => {
           if(cells[a[0]-1] === cells[a[1]-1] && cells[a[1]-1] === cells[a[2]-1] && cells[a[0]-1] != ""){
-            if(player1.style.color === activePlayerColor){
-              gResult = "O Won ✨";
-            }else{
-              gResult = "X Won ✨";
-            }
+            player1.style.color === activePlayerColor ? gResult = "O Won ✨" : gResult = "X Won ✨";
             startTimer();
           }
         })
@@ -198,6 +195,7 @@
         let clickedCell = document.getElementsByClassName(`cell-${clickedCellNumber}`)[0];
         let isCellEmpty = clickedCell.innerHTML === "";
 
+
         if(!gameStarted){
 
           setTimeout(() => {
@@ -205,6 +203,10 @@
           }, 2000);
           resultOrInfo.innerText = "Plz start a new game";
           return;
+        }
+
+        if(isGameFinished){
+          return; 
         }
 
         if(!isCellEmpty){
@@ -215,6 +217,7 @@
           resultOrInfo.innerText = "Cell is occupied"
           return;
         }
+
 
         if(player1.style.color === activePlayerColor){
           clickedCell.innerHTML = X;
