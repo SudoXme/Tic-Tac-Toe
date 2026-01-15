@@ -92,6 +92,7 @@
 
       const startGame = () => {
         gameStarted = true;
+        isGameFinished = false;
         resultOrInfo.innerHTML = "New game started, X's turn"
         let i = 1;
         cells.map( (c) => {
@@ -164,9 +165,10 @@
       const gameResult = () => {
         let gResult = "";
 
-        emptyCellPresent = cells.includes("");
 
-        if(!emptyCellPresent){
+        isEmptyCellPresent = cells.includes("");
+
+        if(!isEmptyCellPresent){
           gResult = "Draw 🤝";
           startTimer();
           isGameFinished = true;
