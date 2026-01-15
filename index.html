@@ -169,15 +169,16 @@
         if(!emptyCellPresent){
           gResult = "Draw 🤝";
           startTimer();
+          isGameFinished = true;
         }
 
         winArrangements.map((a) => {
           if(cells[a[0]-1] === cells[a[1]-1] && cells[a[1]-1] === cells[a[2]-1] && cells[a[0]-1] != ""){
             player1.style.color === activePlayerColor ? gResult = "O Won ✨" : gResult = "X Won ✨";
             startTimer();
+            isGameFinished = true;
           }
         })
-        
       
         resultOrInfo.innerText = gResult;
       }
