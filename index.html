@@ -192,11 +192,43 @@
         cells[clickedCellNumber-1] = cellEntry;
       }
 
-
-
+      // Write the code so that If somebody has won or the game is draw the cells can't be clikced.
       
       const cellClicked = () => {
+        let clickedCell = document.getElementsByClassName(`cell-${clickedCellNumber}`)[0];
+        let isCellEmpty = clickedCell.innerHTML === "";
+
+        if(!gameStarted){
+
+          setTimeout(() => {
+            resultOrInfo.innerHTML= "";
+          }, 2000);
+          resultOrInfo.innerText = "Plz start a new game";
+          return;
+        }
+
+        if(!isCellEmpty){
+
+          setTimeout(() => {
+            resultOrInfo.innerHTML= "";
+          }, 2000);
+          resultOrInfo.innerText = "Cell is occupied"
+          return;
+        }
+
+        if(player1.style.color === activePlayerColor){
+          clickedCell.innerHTML = X;
+          fillCellArray("X");
+        }else{
+          clickedCell.innerHTML = O;
+          fillCellArray("O");
+        }
+        setActivePlayer();
+        resultOrInfo.innerText ="";
+        gameResult();
+
         /**
+
         if(gameStarted){
           let clickedCell = document.getElementsByClassName(`cell-${clickedCellNumber}`)[0];
 
@@ -227,40 +259,6 @@
       }
         **/
 
-        if(!gameStarted){
-
-          setTimeout(() => {
-            resultOrInfo.innerHTML= "";
-          }, 2000);
-          resultOrInfo.innerText = "Plz start a new game"
-
-        }else{
-
-          let clickedCell = document.getElementsByClassName(`cell-${clickedCellNumber}`)[0];
-
-          let isCellEmpty = clickedCell.innerHTML === "";
-          if(!isCellEmpty){
-
-            setTimeout(() => {
-              resultOrInfo.innerHTML= "";
-            }, 2000);
-            resultOrInfo.innerText = "Cell is occupied"
-
-          }else{
-
-            if(player1.style.color === activePlayerColor){
-              clickedCell.innerHTML = X;
-              fillCellArray("X");
-            }else{
-              clickedCell.innerHTML = O;
-              fillCellArray("O");
-            }
-            setActivePlayer();
-            resultOrInfo.innerText ="";
-            gameResult();
-
-          }
-        }
       }
 
     </script>
